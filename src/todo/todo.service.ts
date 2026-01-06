@@ -3,6 +3,12 @@ import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
 
 @Injectable()
+// add todo base on userid
+// get todo base on useid (not complete)
+// get todo base on useid ( completed)
+// mark todo as complete based todo id
+// delete todo based on todo id
+
 export class TodoService {
   create(createTodoDto: CreateTodoDto) {
     return 'This action adds a new todo';
