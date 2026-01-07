@@ -3,7 +3,7 @@ import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Todo } from './entities/todo.entity';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { User } from 'src/user/entities/user.entity';
 import { todo } from 'node:test';
 
@@ -43,8 +43,17 @@ export class TodoService {
     return await this.todoRepository.save(todo);
   }
 
-  findAll() {
-    return this.todoRepository.find({ relations: ['user'], where: { completed: false } });
+  async findAll(search?: string) {
+    const query = await this.todoRepository
+      .createQueryBuilder('todo')
+      .leftJoinAndSelect('todo.user', 'user')
+    // .where('todo.completed = :completed', { completed: false });
+
+    if (search) {
+      query.andWhere({ title: Like(`%${search}%`), completed: false });
+    }
+
+    return query.getMany();
   }
 
   findAlltrue() {
