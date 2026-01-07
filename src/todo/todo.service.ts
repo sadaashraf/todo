@@ -90,4 +90,9 @@ export class TodoService {
 
     return await this.todoRepository.delete(id);
   }
+
+  markComplete(id: number) {
+    return this.todoRepository.update(id, { completed: true });
+  }
+
 }
