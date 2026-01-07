@@ -5,7 +5,7 @@ import { UpdateTodoDto } from './dto/update-todo.dto';
 
 @Controller('todo')
 export class TodoController {
-  constructor(private readonly todoService: TodoService) {}
+  constructor(private readonly todoService: TodoService) { }
 
   @Post()
   create(@Body() createTodoDto: CreateTodoDto) {
@@ -15,6 +15,11 @@ export class TodoController {
   @Get()
   findAll() {
     return this.todoService.findAll();
+  }
+
+  @Get('completed')
+  findAllCompleted() {
+    return this.todoService.findAlltrue();
   }
 
   @Get(':id')
@@ -27,8 +32,14 @@ export class TodoController {
     return this.todoService.update(+id, updateTodoDto);
   }
 
+  @Patch(':id/complete')
+  markComplete(@Param('id') id: string) {
+    return this.todoService.markComplete(+id);
+  }
+
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.todoService.remove(+id);
   }
+
 }
