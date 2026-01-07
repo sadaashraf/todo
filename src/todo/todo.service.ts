@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Todo } from './entities/todo.entity';
 import { Repository } from 'typeorm';
 import { User } from 'src/user/entities/user.entity';
+import { todo } from 'node:test';
 
 @Injectable()
 // add todo base on userid
@@ -91,8 +92,16 @@ export class TodoService {
     return await this.todoRepository.delete(id);
   }
 
-  markComplete(id: number) {
-    return this.todoRepository.update(id, { completed: true });
+  async markComplete(id: number) {
+    const result = await this.todoRepository.update(id, {
+      completed: true,
+    });
+
+    if (result.affected === 0) {
+      throw new NotFoundException('Todo not found');
+    }
+
+    return { message: 'Todo marked as completed' };
   }
 
 }
