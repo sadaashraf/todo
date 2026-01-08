@@ -29,7 +29,7 @@ export class UserService {
   }
 
   userGetbyEmail(email: string) {
-    return this.userRepository.findOneByOrFail({ email })
+    return this.userRepository.findOne({ where: { email: email } });
   }
 
   async update(id: number, updateUserDto: UpdateUserDto) {
