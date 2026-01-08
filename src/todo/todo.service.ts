@@ -45,8 +45,8 @@ export class TodoService {
 
   async findAll(search?: string) {
     const query = await this.todoRepository
-      .createQueryBuilder('todo')
-      .leftJoinAndSelect('todo.user', 'user')
+      .createQueryBuilder('c')
+      .leftJoinAndSelect('c.user', 'user')
     // .where('todo.completed = :completed', { completed: false });
 
     if (search) {
