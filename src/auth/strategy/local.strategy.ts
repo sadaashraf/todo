@@ -24,7 +24,7 @@ export class localStrategy extends PassportStrategy(Strategy) {
       throw new UnauthorizedException('user not found');
     }
     if (user.password !== password) {
-      throw new UnauthorizedException('invalid password');
+      throw new UnauthorizedException('invalid credentials');
     }
     return user;
 
