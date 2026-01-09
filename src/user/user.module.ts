@@ -10,5 +10,6 @@ import { TypeOrmModule } from '@nestjs/typeorm/dist/typeorm.module';
   ],
   controllers: [UserController],
   providers: [UserService],
+  exports: [UserService],
 })
 export class UserModule { }

@@ -11,5 +11,6 @@ import { User } from 'src/user/entities/user.entity';
   ],
   controllers: [TodoController],
   providers: [TodoService],
+
 })
 export class TodoModule { }
