@@ -95,7 +95,7 @@ export class TodoService {
     });
 
     if (!todo) {
-      throw new NotFoundException('Todo not found');
+      throw new NotFoundException('Todo is not found');
     }
 
     return await this.todoRepository.delete(id);
