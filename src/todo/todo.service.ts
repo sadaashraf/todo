@@ -81,7 +81,7 @@ export class TodoService {
     });
 
     if (!todo) {
-      throw new NotFoundException('Todo is not found');
+      throw new NotFoundException('Todo not found');
     }
 
     Object.assign(todo, updateTodoDto);
