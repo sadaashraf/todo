@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Navbar from "../components/navbar";
 
 function Users() {
   const [users, setUsers] = useState([]);
@@ -57,24 +58,29 @@ function Users() {
   if (error) return <p className="text-red-600 text-center mt-10">{error}</p>;
 
   return (
-    <div className="flex flex-col items-center space-y-4 mt-6">
-      {users.map((user) => (
-        <div
-          key={user.id}
-          className="bg-white p-4 rounded shadow w-96 flex justify-between items-center"
-        >
-          <span>{user.email}</span>
+    <div className="min-h-screen bg-blue-200">
+      <Navbar />
 
-          {currentUser.role === "admin" && (
-            <button
-              onClick={() => deleteUser(user.id)}
-              className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700"
-            >
-              Delete
-            </button>
-          )}
-        </div>
-      ))}
+      <div className="flex flex-col items-center space-y-4 mt-6">
+        {users.map((user) => (
+          <div
+            key={user.id}
+            className="bg-white p-4 rounded shadow w-96 flex justify-between items-center"
+          >
+            <span>{user.email}</span>
+
+            {currentUser.role === "admin" && (
+              <button
+                onClick={() => deleteUser(user.id)}
+                className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700"
+              >
+                Delete
+              </button>
+            )}
+          </div>
+
+        ))}
+      </div>
     </div>
   );
 }

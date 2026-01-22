@@ -21,13 +21,13 @@ export class UserController {
   @Get()
   @UseGuards(new roleGuard('admin'))
   findAll(@Req() req) {
-    console.log(req.user);
+    // console.log(req.user);
     return this.userService.findAll();
   }
   @ApiSecurity('JWT_Auth')
   @Get(':id')
   findOne(@Param('id') id: string, @Req() req) {
-    console.log(req.user);
+    // console.log(req.user);
     return this.userService.findOne(+id);
   }
 

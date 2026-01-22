@@ -20,7 +20,7 @@ export class UserService {
     });
 
     if (existingUser) {
-      throw new BadRequestException('Email or password already in use');
+      throw new BadRequestException('Email or password already exists');
     }
 
     const user = this.userRepository.create(createUserDto);
