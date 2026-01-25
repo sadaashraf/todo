@@ -30,7 +30,7 @@ function Login() {
         return;
       }
 
-      // token save
+      // save token to localStorage
       if (data.token) localStorage.setItem("token", data.token);
 
       // Navigate to dashboard
