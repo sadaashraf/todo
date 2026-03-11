@@ -8,16 +8,16 @@ import { ValidationPipe } from '@nestjs/common/pipes/validation.pipe';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // app.useGlobalPipes(
-  //   new ValidationPipe({
-  //     whitelist: true, // remove extra properties
-  //     forbidNonWhitelisted: true, // throw error if extra fields
-  //     transform: true, // auto-transform payload to DTO class
-  //   }),
-  // );
+  app.useGlobalPipes(
+    // new ValidationPipe({
+    //   whitelist: true, // remove extra properties
+    //   forbidNonWhitelisted: true, // throw error if extra fields
+    //   transform: true, // auto-transform payload to DTO class
+    // }),
+  );
 
   app.enableCors({
-    origin: 'http://localhost:5173', // React Vite URL
+    origin: 'http://localhost:5174', //frondend React Vite URL
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
   });

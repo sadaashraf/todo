@@ -8,11 +8,6 @@ import { User } from 'src/user/entities/user.entity';
 import { todo } from 'node:test';
 
 @Injectable()
-// add todo base on userid
-// get todo base on useid (not complete)
-// get todo base on useid ( completed)
-// mark todo as complete based todo id
-// delete todo based on todo id
 
 export class TodoService {
   constructor(
@@ -28,7 +23,7 @@ export class TodoService {
     });
 
     if (!user) {
-      throw new NotFoundException("User not found");
+      throw new NotFoundException("User is not found");
     }
 
     const todo = this.todoRepository.create({
