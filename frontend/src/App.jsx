@@ -1,43 +1,10 @@
-// import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-// import Login from "./pages/Login";
-// import Signup from "./pages/singUp";
-// import Dashboard from "./pages/dashboard";
-// import Users from "./pages/users";
-
-// const PrivateRoute = ({ children }) => {
-//   const token = localStorage.getItem("token");
-//   return token ? children : <Navigate to="/login" />;
-// };
-
-// function App() {
-//   return (
-//     <BrowserRouter>
-//       <Routes>
-//         <Route path="/" element={<Login />} />
-//         <Route path="/signup" element={<Signup />} />
-
-//         <Route
-//           path="/dashboard"
-//           element={
-//             <PrivateRoute>
-//               <Dashboard />
-//             </PrivateRoute>
-//           }
-//         />
-//         <Route path="/users" element={<Users />} />
-//       </Routes>
-//     </BrowserRouter>
-//   );
-// }
-
-// export default App;
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Login from "./pages/Login";
-import Signup from "./pages/singUp";
 import Todos from "./pages/Todo";
 import Completed from "./pages/Complete";
 import Users from "./pages/users";
+import Login from "./pages/login";
+import Signup from "./pages/singup";
 
 
 

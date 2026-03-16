@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -32,7 +32,12 @@ export class TodoService {
       user,
     });
 
-    return await this.todoRepository.save(todo);
+    await this.todoRepository.save(todo);
+    return {
+      status: HttpStatus.CREATED,
+      message: 'Todo created successfully',
+      data: todo
+    };
   }
 
 
@@ -105,7 +110,10 @@ export class TodoService {
       throw new NotFoundException('Todo not found');
     }
 
-    return { message: 'Todo marked as completed' };
+    return {
+      status: HttpStatus.OK,
+      message: 'Todo marked as completed'
+    };
   }
 
 }
